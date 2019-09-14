@@ -1,0 +1,23 @@
+{
+  "name": "js-introduction-lessons",
+  "version": "1.0.0",
+  "description": "A repository for demo purposes.",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "start": "live-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ssokurenko/js-introduction-lessons.git"
+  },
+  "author": "Sergey Sokurenko",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ssokurenko/js-introduction-lessons/issues"
+  },
+  "homepage": "https://github.com/ssokurenko/js-introduction-lessons#readme",
+  "devDependencies": {
+    "live-server": "^1.2.1"
+  }
+}
