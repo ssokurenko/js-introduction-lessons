@@ -45,20 +45,19 @@ let clock = document.querySelector('.time');
 
 let clockTimer = () => {
   let time = new Date();
-  let hours = time.getHours();
-  let minutes = time.getMinutes();
-  let seconds = time.getSeconds();
+  let hours = time.getHours().toString();
+  let minutes = time.getMinutes().toString();
+  let seconds = time.getSeconds().toString();
 
-  if (hours < 10) {
+  if (hours.length < 2) {
     hours = '0' + hours;
-  }else if (minutes < 10){
+  }else if (minutes.length < 2){
     minutes = '0' + minutes;
-  }else if (seconds < 10){
+  }else if (seconds.length < 2){
     seconds = '0' + seconds;
   }
 
   let timerString = hours + ':' + minutes + ':' + seconds;
-
   clock.textContent = timerString;
 }
 
