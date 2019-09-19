@@ -9,11 +9,6 @@ window.setTimeout(
   () => console.log(showMessage('Luigi')),
   3000);
 
-/*window.setInterval(
-  () => console.log(new Date()),
-  1000
-)*/
-
 // Sync code
 functionWithCallBack(showMessage);
 
@@ -24,7 +19,7 @@ const showJoke = text => {
 
 // Fetch API example
 
-let btn = document.querySelector('.container .btn');
+const btn = document.querySelector('.container #get-new-joke');
 const apiURl = 'https://api.chucknorris.io/jokes/random';
 
 btn.onclick = () => {
@@ -41,9 +36,9 @@ btn.onclick = () => {
     });
 }
 
-let clock = document.querySelector('.time');
+const clock = document.querySelector('.time');
 
-let clockTimer = () => {
+const clockTimer = () => {
   let time = new Date();
   let hours = time.getHours().toString();
   let minutes = time.getMinutes().toString();
@@ -57,7 +52,7 @@ let clockTimer = () => {
     seconds = '0' + seconds;
   }
 
-  let timerString = hours + ':' + minutes + ':' + seconds;
+  const timerString = hours + ':' + minutes + ':' + seconds;
   clock.textContent = timerString;
 }
 
