@@ -19,5 +19,8 @@
   "homepage": "https://github.com/ssokurenko/js-introduction-lessons#readme",
   "devDependencies": {
     "live-server": "^1.2.1"
+  },
+  "dependencies": {
+    "unirest": "^0.6.0"
   }
 }
