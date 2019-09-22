@@ -59,8 +59,6 @@ const clockTimer = () => {
 clockTimer();
 setInterval(clockTimer, 1000);
 
-
-
 fetch("https://matchilling-chuck-norris-jokes-v1.p.rapidapi.com/jokes/random", {
 	"method": "GET",
 	"headers": {
@@ -69,9 +67,6 @@ fetch("https://matchilling-chuck-norris-jokes-v1.p.rapidapi.com/jokes/random", {
 		"accept": "application/json"
 	}
 })
-.then(response => {
-	console.log(response);
-})
-.catch(err => {
-	console.log(err);
-});
+.then(response => response.json())
+.then(data => console.log(data))
+.catch(err => console.error(err));
