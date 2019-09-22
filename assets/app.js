@@ -46,9 +46,9 @@ const clockTimer = () => {
 
   if (hours.length < 2) {
     hours = '0' + hours;
-  }else if (minutes.length < 2){
+  } else if (minutes.length < 2) {
     minutes = '0' + minutes;
-  }else if (seconds.length < 2){
+  } else if (seconds.length < 2) {
     seconds = '0' + seconds;
   }
 
@@ -61,3 +61,17 @@ setInterval(clockTimer, 1000);
 
 
 
+fetch("https://matchilling-chuck-norris-jokes-v1.p.rapidapi.com/jokes/random", {
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-host": "matchilling-chuck-norris-jokes-v1.p.rapidapi.com",
+		"x-rapidapi-key": "4f5710b5d5msh03863099eed0108p114feajsnad31d2daee27",
+		"accept": "application/json"
+	}
+})
+.then(response => {
+	console.log(response);
+})
+.catch(err => {
+	console.log(err);
+});
