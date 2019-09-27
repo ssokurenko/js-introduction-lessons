@@ -63,46 +63,32 @@ clockTimer();
 setInterval(clockTimer, 1000);
 
 
-
-
-
-
-// fetch("https://matchilling-chuck-norris-jokes-v1.p.rapidapi.com/jokes/random", {
-//   "method": "GET",
-//   "headers": {
-//     "x-rapidapi-host": "matchilling-chuck-norris-jokes-v1.p.rapidapi.com",
-//     "x-rapidapi-key": "4f5710b5d5msh03863099eed0108p114feajsnad31d2daee27",
-//     "accept": "application/json"
-//   }
-// })
-//   .then(response => {
-//     return response.json();
-//   })
-//   .then(data => {
-//     const element = document.querySelector('.doubleJoke');
-//     element.innerHTML = data.value;
-//   })
-//   .catch(err => {
-//     console.log(err);
-//   });
-
-
 fetch('https://reqres.in/api/users?page=2')
   .then(response => {
     return response.json();
   })
+
   .then(data => {
-    data.data.forEach(user => {
-      // console.log(user.email);
-      let node = document.createElement('li');                 
-      let textnode = document.createTextNode(user.email);        
-      node.appendChild(textnode);
-      document.getElementById("myList").appendChild(node);
+    let sorting = data.data.sort((a, b) => {
+      let nameA = a.email.toUpperCase();
+      let nameB = b.email.toUpperCase();
+      if (nameA < nameB) {
+        return -1;
+      } else if (nameA > nameB) {
+        return 1;
+      }
+      return 0;
+    });
+    sorting.forEach(data => {
+      console.log(data.email);
+      let str = document.querySelector('.weather');
+      let node = document.createElement('div');
+      let textArea = document.createTextNode(data.email);
+      node.appendChild(textArea);
+      document.querySelector('.email').appendChild(node);
     })
-    // for (let i = 0; i < data.data.length; i++) {
-    //   email.innerHTML = data.data[i].email
-    // }
   })
+  
   .catch(err => {
     console.error(err);
   });
