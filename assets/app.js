@@ -91,3 +91,4 @@ fetch('https://reqres.in/api/users?page=2')
   .catch(err => {
     console.error(err);
   });
+
