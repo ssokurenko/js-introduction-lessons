@@ -78,27 +78,9 @@ fetch('https://reqres.in/api/users?page=2')
       }
       return 0;
     });
-    render(sortedResponse);
+    showUsers(sortedResponse);
   })
 
   .catch(err => {
     console.error(err);
   });
-
-render = function (input) {
-  const $container = $('#users');
-  input.forEach(user => $container.append(
-    `<li class="user-item">
-      <a href="/#${user.first_name}">
-        ${user.first_name} ${user.last_name}
-      </a>
-    </li>`
-  ));
-
-  $('.user-item')
-    .addClass('test')
-    .css('color', 'green')
-    .css('font-size', '2rem')
-    .find('a')
-    .css('color', 'violet');
-}
