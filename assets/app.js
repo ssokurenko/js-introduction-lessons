@@ -80,7 +80,6 @@ fetch('https://reqres.in/api/users?page=2')
       return 0;
     });
     sorting.forEach(data => {
-      console.log(data.email);
       let str = document.querySelector('.weather');
       let node = document.createElement('div');
       let textArea = document.createTextNode(data.email);
