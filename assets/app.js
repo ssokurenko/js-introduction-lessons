@@ -84,14 +84,21 @@ fetch('https://reqres.in/api/users?page=2')
   .catch(err => {
     console.error(err);
   });
-  
-  render = function(input) {
-    input.forEach(data => {
-      let str = document.querySelector('.weather');
-      let node = document.createElement('div');
-      let textArea = document.createTextNode(data.email);
-      node.appendChild(textArea);
-      document.querySelector('.email').appendChild(node);
-    })
-  }
 
+render = function (input) {
+  const $container = $('#users');
+  input.forEach(user => $container.append(
+    `<li class="user-item">
+      <a href="/#${user.first_name}">
+        ${user.first_name} ${user.last_name}
+      </a>
+    </li>`
+  ));
+
+  $('.user-item')
+    .addClass('test')
+    .css('color', 'green')
+    .css('font-size', '2rem')
+    .find('a')
+    .css('color', 'violet');
+}
