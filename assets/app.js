@@ -17,6 +17,7 @@ const showJoke = text => {
   element.innerHTML = text;
 }
 
+
 // Fetch API example
 
 const btn = document.querySelector('.container #get-new-joke');
@@ -43,6 +44,7 @@ const clockTimer = () => {
   let hours = time.getHours().toString();
   let minutes = time.getMinutes().toString();
   let seconds = time.getSeconds().toString();
+  const points = seconds % 2 === 0 ? ':' : ' ';
 
   if (hours.length < 2) {
     hours = '0' + hours;
@@ -52,21 +54,41 @@ const clockTimer = () => {
     seconds = '0' + seconds;
   }
 
-  const timerString = hours + ':' + minutes + ':' + seconds;
+  const timerString = hours + points + minutes + points + seconds;
   clock.textContent = timerString;
+
 }
 
 clockTimer();
 setInterval(clockTimer, 1000);
 
-fetch("https://matchilling-chuck-norris-jokes-v1.p.rapidapi.com/jokes/random", {
-	"method": "GET",
-	"headers": {
-		"x-rapidapi-host": "matchilling-chuck-norris-jokes-v1.p.rapidapi.com",
-		"x-rapidapi-key": "4f5710b5d5msh03863099eed0108p114feajsnad31d2daee27",
-		"accept": "application/json"
-	}
-})
-.then(response => response.json())
-.then(data => console.log(data))
-.catch(err => console.error(err));
+
+fetch('https://reqres.in/api/users?page=2')
+  .then(response => {
+    return response.json();
+  })
+
+  .then(data => {
+    let sorting = data.data.sort((a, b) => {
+      let nameA = a.email.toUpperCase();
+      let nameB = b.email.toUpperCase();
+      if (nameA < nameB) {
+        return -1;
+      } else if (nameA > nameB) {
+        return 1;
+      }
+      return 0;
+    });
+    sorting.forEach(data => {
+      let str = document.querySelector('.weather');
+      let node = document.createElement('div');
+      let textArea = document.createTextNode(data.email);
+      node.appendChild(textArea);
+      document.querySelector('.email').appendChild(node);
+    })
+  })
+  
+  .catch(err => {
+    console.error(err);
+  });
+
