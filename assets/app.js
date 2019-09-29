@@ -67,9 +67,8 @@ fetch('https://reqres.in/api/users?page=2')
   .then(response => {
     return response.json();
   })
-
-  .then(data => {
-    let sorting = data.data.sort((a, b) => {
+  .then(responseJson => {
+    let sortedResponse = responseJson.data.sort((a, b) => {
       let nameA = a.email.toUpperCase();
       let nameB = b.email.toUpperCase();
       if (nameA < nameB) {
@@ -79,16 +78,20 @@ fetch('https://reqres.in/api/users?page=2')
       }
       return 0;
     });
-    sorting.forEach(data => {
+    render(sortedResponse);
+  })
+
+  .catch(err => {
+    console.error(err);
+  });
+  
+  render = function(input) {
+    input.forEach(data => {
       let str = document.querySelector('.weather');
       let node = document.createElement('div');
       let textArea = document.createTextNode(data.email);
       node.appendChild(textArea);
       document.querySelector('.email').appendChild(node);
     })
-  })
-  
-  .catch(err => {
-    console.error(err);
-  });
+  }
 
